@@ -18,6 +18,7 @@
         - Library/Method: HTML, Tailwind CSS, Vanilla JS (for section toggling, nav, chart), Chart.js.
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
+        
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -80,40 +81,49 @@
             background-color: #f0fdfa; /* teal-50, a very light teal for hover on active */
             color: #0f766e;
         }
+        @keyframes fade-in {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 1.2s ease;
+}
     </style>
 </head>
 <body class="bg-stone-100 text-stone-800">
 
-    <nav class="sticky-nav bg-teal-700 text-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="#" id="siteTitleLink" class="text-2xl font-bold hover:text-teal-200 transition-colors">澳门一日游</a>
+ 
+
+    <nav class="sticky-nav bg-teal-700/95 text-white shadow-lg backdrop-blur-md">
+        <div class="max-w-4xl mx-auto px-2 sm:px-4">
+            <div class="flex justify-center items-center h-16">
+                <div class="hidden md:flex space-x-2 lg:space-x-4">
+                    <a href="#section-morning" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">☀️ 上午</a>
+                    <a href="#section-afternoon" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🏙️ 下午</a>
+                    <a href="#section-evening" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🌃 傍晚</a>
+                    <a href="#section-night" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🌙 夜间</a>
+                    <a href="#section-summary" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">📊 速览</a>
+                    <a href="#section-chart" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🕒 时间分配</a>
+                    <a href="#section-tips" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">💡 贴士</a>
+                    <a href="#section-guide" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🧑‍💼 导游</a>
                 </div>
-                <div class="hidden md:flex space-x-3 lg:space-x-4">
-                    <a href="#section-morning" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">☀️ 上午</a>
-                    <a href="#section-afternoon" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">🏙️ 下午</a>
-                    <a href="#section-evening" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">🌃 傍晚</a>
-                    <a href="#section-night" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">🌙 夜间</a>
-                    <a href="#section-summary" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">📊 速览</a>
-                    <a href="#section-chart" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">🕒 时间分配</a>
-                    <a href="#section-tips" class="main-nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors">💡 贴士</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white hover:text-teal-200 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <div class="md:hidden flex-1 flex justify-end">
+                    <button id="mobile-menu-button" class="text-white hover:text-teal-200 focus:outline-none p-2 rounded-full bg-teal-600/80 shadow-md">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-teal-700 divide-y divide-teal-600">
-            <a href="#section-morning" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">☀️ 上午</a>
-            <a href="#section-afternoon" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">🏙️ 下午</a>
-            <a href="#section-evening" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">🌃 傍晚</a>
-            <a href="#section-night" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">🌙 夜间</a>
-            <a href="#section-summary" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">📊 速览</a>
-            <a href="#section-chart" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">🕒 时间分配</a>
-            <a href="#section-tips" class="main-nav-link block px-4 py-3 text-sm hover:bg-teal-600 transition-colors">💡 贴士</a>
+        <div id="mobile-menu" class="md:hidden hidden bg-teal-700/95 divide-y divide-teal-600 px-2 pb-2 rounded-b-xl shadow-lg">
+            <a href="#section-morning" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">☀️ 上午</a>
+            <a href="#section-afternoon" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🏙️ 下午</a>
+            <a href="#section-evening" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🌃 傍晚</a>
+            <a href="#section-night" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🌙 夜间</a>
+            <a href="#section-summary" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">📊 速览</a>
+            <a href="#section-chart" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🕒 时间分配</a>
+            <a href="#section-tips" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">💡 贴士</a>
+            <a href="#section-guide" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🧑‍💼 导游</a>
+
         </div>
     </nav>
 
@@ -172,11 +182,6 @@
                 <img src="jianyao.jpg" alt="简要路线图" class="rounded-lg shadow-md max-w-full md:max-w-md h-auto">
             </div>
         </section>
-        <header class="text-center mb-12 mt-8">
-            <h1 class="text-4xl font-extrabold text-teal-800 mb-4">澳门一日游互动行程规划</h1>
-            <p class="text-lg text-stone-700">探索6月5日澳门历史风味与璀璨路氹的完美融合之旅。</p>
-        </header>
-
         <section id="section-morning" class="content-section mb-12 bg-white p-6 rounded-xl shadow-lg">
             <h2 class="text-3xl font-bold text-teal-700 mb-6 border-b-2 border-teal-500 pb-2">☀️ 上午 (约 10:20 - 13:30): 抵达澳门，沉浸半岛历史心跳</h2>
             <div class="w-full flex justify-center mb-4">
@@ -208,7 +213,7 @@
                             <h3 class="text-xl font-semibold text-teal-600 mb-1">⏰ 10:50 - 11:00: 新葡京与葡京娱乐场外观合影</h3>
                             <p class="text-sm text-stone-600">📸 活动：欣赏并拍摄新葡京酒店与葡京娱乐场的独特建筑，感受“赌王同款”经典取景地。</p>
                         </div>
-                        <img src="https://th.bing.com/th/id/OIP.90Ey1WYZXweJfMpJRAs-LwHaE8?cb=iwc2&rs=1&pid=ImgDetMain" alt="新葡京与葡京娱乐场外观" class="attraction-image">
+                        <img src="https://img1.baidu.com/it/u=3851902728,3418227341&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=636" alt="新葡京与葡京娱乐场外观" class="attraction-image">
                     </div>
                 </div>
 
@@ -237,12 +242,12 @@
                 <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
                         <div class="md:col-span-2">
-                            <h3 class="text-xl font-semibold text-teal-600 mb-1">⏰ 11:30 - 12:30: 瞻仰大三巴牌坊</h3>
+                            <h3 class="text-xl font-semibold text-teal-600 mb-1">⏰ 11:30 - 12:30: 瞻望大三巴牌坊</h3>
                             <p class="text-sm text-stone-600">🚶‍♂️ 交通：从恋爱巷步行约4分钟。</p>
                             <p class="text-sm text-stone-600">🏛️ 景点：澳门最具代表性地标。可探索牌坊石雕，登高望远。时间充裕可参观旁边的澳门博物馆和大炮台。</p>
                             <p class="text-sm text-stone-500 mt-1">💡 备注：行程资料中提及永利澳门“发财树”表演（12点起整点），若时间极度充裕可考虑，但本行程优先确保午餐及后续路氹行程。</p>
                         </div>
-                        <img src="https://th.bing.com/th/id/OIP.lgfGiJ_4wNvSx0-bYQCzjwHaFc?cb=iwc2&rs=1&pid=ImgDetMain" alt="大三巴牌坊" class="attraction-image">
+                        <img src="https://img2.baidu.com/it/u=1538018388,2143262888&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=607" alt="大三巴牌坊" class="attraction-image">
                     </div>
                 </div>
             </div>
@@ -253,7 +258,7 @@
             <div class="w-full flex justify-center mb-4">
                 <img src="afternoon.jpg" alt="下午路线图" class="rounded-lg shadow-md max-w-full md:max-w-md h-auto">
             </div>
-            <p class="text-stone-600 mb-6">午后时光，我们将转换节奏，从历史悠久的澳门半岛前往充满地道风味的氹仔旧城区享用午餐，随后漫步于路氹金光大道，感受各大豪华度假村的独特魅力和宏伟建筑。</p>
+            <p class="text-stone-600 mb-6">午后时光，我们将转换节奏，从历史悠久的澳门半岛前往充满地道风味的氹仔旧城区享用午餐，随后漫步于路氹金光大道，感受各大豪华度假村独特魅力和宏伟建筑。</p>
             <div class="space-y-8">
                 <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
                      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
@@ -269,7 +274,7 @@
                                 <li>杨枝金捞甜品</li>
                             </ul>
                         </div>
-                        <img src="https://th.bing.com/th/id/OIP.XWh6nYMm1X2tjZPtc7cGQgHaJ4?cb=iwc2&rs=1&pid=ImgDetMain" alt="官也街美食" class="attraction-image">
+                        <img src="https://qcloud.dpfile.com/pc/Um_CH--1EI3b7ZgWcRk11oFebs4G69U_YjwaN2Cywn7uTEUwe6AXdZIGa6qWVvsc.jpg" alt="官也街美食" class="attraction-image">
                     </div>
                 </div>
                 <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
@@ -282,7 +287,7 @@
                                 <p class="text-md font-medium text-teal-600 mt-2">15:00 - 16:00: 探索威尼斯人</p>
                                 <p class="text-sm text-stone-600">✨ 活动：欣赏奢华内装、大运河购物中心，感受宏伟氛围。</p>
                             </div>
-                            <img src="https://th.bing.com/th/id/OIP._siiZdanTGWlSWpx4hcY9wHaE6?cb=iwc2&rs=1&pid=ImgDetMain" alt="澳门威尼斯人" class="attraction-image">
+                            <img src="https://img2.baidu.com/it/u=424050106,2182870204&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1200" alt="澳门威尼斯人" class="attraction-image">
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start p-3 border-b border-stone-200 last:border-b-0">
                             <div class="md:col-span-2">
@@ -291,7 +296,7 @@
                                 <p class="text-md font-medium text-teal-600 mt-2">16:15 - 16:45: 体验巴黎人风情</p>
                                 <p class="text-sm text-stone-600">🗼 活动：观赏1/2比例复制的埃菲尔铁塔，寻找大草坪拍摄全貌。</p>
                             </div>
-                             <img src="https://th.bing.com/th/id/OIP.ocOYc7zwxFrJcRcH1v5ffgHaE7?cb=iwc2&rs=1&pid=ImgDetMain" alt="澳门巴黎人" class="attraction-image">
+                             <img src="https://img2.baidu.com/it/u=1032965610,3489389316&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" alt="澳门巴黎人" class="attraction-image">
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start p-3">
                             <div class="md:col-span-2">
@@ -300,7 +305,7 @@
                                 <p class="text-md font-medium text-teal-600 mt-2">17:00 - 17:30: 欣赏伦敦人景致</p>
                                 <p class="text-sm text-stone-600">🇬🇧 活动：欣赏议会大厦、大本钟复制建筑。傍晚灯光渐起，更添魅力。</p>
                             </div>
-                            <img src="https://th.bing.com/th/id/OIP.Y0cnlPfhQG1kaLI2QV2f3gHaEN?cb=iwc2&rs=1&pid=ImgDetMain" alt="澳门伦敦人" class="attraction-image">
+                            <img src="https://img2.baidu.com/it/u=380296365,3999647311&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=714" alt="澳门伦敦人" class="attraction-image">
                         </div>
                     </div>
                 </div>
@@ -318,7 +323,7 @@
                             <p class="text-sm text-stone-600">🚶‍♂️ 交通：从伦敦人步行约10分钟。</p>
                             <p class="text-sm text-stone-600">☕ 活动：赌场内可能有免费奶茶糕点，可作短暂休整。</p>
                         </div>
-                        <img src="https://th.bing.com/th/id/OIP.eDQzCWcDcMgCfwwMe_NbrQHaE8?cb=iwc2&rs=1&pid=ImgDetMain" alt="美狮美高梅" class="attraction-image">
+                        <img src="https://bkimg.cdn.bcebos.com/pic/9e3df8dcd100baa1cd1160dbde5eae12c8fcc3ce8037" alt="美狮美高梅" class="attraction-image">
                     </div>
                 </div>
                 <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
@@ -333,7 +338,7 @@
                             </ul>
                             <p class="text-sm text-stone-600 mt-1">🍽️ 晚餐考虑：可在美狮美高梅享用免费茶点，或在永利皇宫内简餐/小食，或此前官也街已饱餐。</p>
                         </div>
-                        <img src="https://th.bing.com/th/id/OIP.EC9DI_6jTeZni4m88qxQFQHaFj?cb=iwc2&rs=1&pid=ImgDetMain" alt="永利皇宫" class="attraction-image">
+                        <img src="https://img0.baidu.com/it/u=1043607793,2467342914&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=963" alt="永利皇宫" class="attraction-image">
                     </div>
                 </div>
                  <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
@@ -395,12 +400,28 @@
                 </li>
             </ul>
         </section>
-
+        <section id="section-guide" class="content-section mb-12 bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold text-teal-700 mb-6 border-b-2 border-teal-500 pb-2">🧑‍💼 导游介绍</h2>
+            <div class="flex flex-col md:flex-row items-center md:justify-center gap-12 animate-fade-in">
+                <div class="flex flex-col items-center bg-stone-50 p-6 rounded-xl shadow-md transition-transform duration-500 hover:scale-105">
+                    <img src="bet.jpg" alt="导游小王" class="w-32 h-32 rounded-full shadow-md object-cover mb-4">
+                    <p class="text-xl font-semibold text-teal-800 mb-2">小王</p>
+                    <p class="text-stone-600 mb-2">联系方式：xiaobei_bet</p>
+                    <p class="text-stone-600">别看王导游平时低调，一开口就是行走的历史书+美食指南！擅长用幽默风趣的语言，把枯燥的景点讲成段子，把冷门的小故事讲成“哇哦~”现场。跟着王导，风景不止好看，背后的小秘密也一个不落，绝对是旅途中最懂你胃口、最会抓拍的“灵魂导游”。一句话总结：有王导的旅行，不怕无聊，只怕你笑出声</p>
+                </div>
+                <div class="flex flex-col items-center bg-stone-50 p-6 rounded-xl shadow-md transition-transform duration-500 hover:scale-105">
+                    <img src="zhu.jpg" alt="导游小朱" class="w-32 h-32 rounded-full shadow-md object-cover mb-4">
+                    <p class="text-xl font-semibold text-teal-800 mb-2">小朱</p>
+                    <p class="text-stone-600 mb-2">联系方式：xiaozhu_zrf</p>
+                    <p class="text-stone-600">如果说旅行需要气氛担当，那朱导游就是那个“氛围王”。自带音响+段子库，轻松带动全团热情，从车上high到景区，每个路口都有他的搞笑梗和贴心提醒。擅长捕捉拍照C位，帮你找最佳机位、最出片角度，自拍合影统统安排妥当。最重要的是，朱导超会照顾每位团友，细心又温暖，跟着朱导，不止是玩得开心，更像跟好朋友一起去旅行！</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer class="text-center py-8 text-stone-500 text-sm">
         <p>祝您澳门一日游旅途愉快！</p>
-        <p>&copy; 互动行程规划</p>
+        <p>&copy; czt</p>
     </footer>
 
     <script>
@@ -557,3 +578,5 @@
 
 </body>
 </html>
+
+
