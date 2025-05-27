@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>澳门一日游互动行程规划 - 6月5日</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    @media (max-width: 767px) {
-      .content-section { display: block !important; }
-    }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Visualization & Content Choices: 
         - Itinerary Flow: Chronological sections, one visible at a time, with text and images. Goal: Organize, Inform, Focus. Interaction: Click nav to show section.
         - Timings & Durations: Text. Goal: Inform.
@@ -93,39 +91,20 @@
     </style>
 </head>
 <body class="bg-stone-100 text-stone-800">
-
- 
-
     <nav class="sticky-nav bg-teal-700/95 text-white shadow-lg backdrop-blur-md">
         <div class="max-w-4xl mx-auto px-2 sm:px-4">
-            <div class="flex justify-center items-center h-16">
-                <div class="hidden md:flex space-x-2 lg:space-x-4">
-                    <a href="#section-morning" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">☀️ 上午</a>
-                    <a href="#section-afternoon" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🏙️ 下午</a>
-                    <a href="#section-evening" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🌃 傍晚</a>
-                    <a href="#section-night" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🌙 夜间</a>
-                    <a href="#section-summary" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">📊 速览</a>
-                    <a href="#section-chart" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🕒 时间分配</a>
-                    <a href="#section-tips" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">💡 贴士</a>
-                    <a href="#section-guide" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm">🧑‍💼 导游</a>
-                </div>
-                <div class="md:hidden flex-1 flex justify-end">
-                    <button id="mobile-menu-button" class="text-white hover:text-teal-200 focus:outline-none p-2 rounded-full bg-teal-600/80 shadow-md">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
+            <div class="flex items-center h-16 overflow-x-auto scrollbar-hide">
+                <div class="flex flex-nowrap space-x-2 lg:space-x-4 w-full justify-center">
+                    <a href="#section-morning" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">☀️ 上午</a>
+                    <a href="#section-afternoon" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">🏙️ 下午</a>
+                    <a href="#section-evening" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">🌃 傍晚</a>
+                    <a href="#section-night" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">🌙 夜间</a>
+                    <a href="#section-summary" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">📊 速览</a>
+                    <a href="#section-chart" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">🕒 时间分配</a>
+                    <a href="#section-tips" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">💡 贴士</a>
+                    <a href="#section-guide" class="main-nav-link px-4 py-2 rounded-full text-base font-medium hover:bg-teal-600 transition-colors shadow-sm whitespace-nowrap">🧑‍💼 导游</a>
                 </div>
             </div>
-        </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-teal-700/95 divide-y divide-teal-600 px-2 pb-2 rounded-b-xl shadow-lg">
-            <a href="#section-morning" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">☀️ 上午</a>
-            <a href="#section-afternoon" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🏙️ 下午</a>
-            <a href="#section-evening" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🌃 傍晚</a>
-            <a href="#section-night" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🌙 夜间</a>
-            <a href="#section-summary" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">📊 速览</a>
-            <a href="#section-chart" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🕒 时间分配</a>
-            <a href="#section-tips" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">💡 贴士</a>
-            <a href="#section-guide" class="main-nav-link block px-4 py-3 text-base rounded-lg hover:bg-teal-600 transition-colors">🧑‍💼 导游</a>
-
         </div>
     </nav>
 
@@ -580,5 +559,10 @@
 
 </body>
 </html>
+
+
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
 
